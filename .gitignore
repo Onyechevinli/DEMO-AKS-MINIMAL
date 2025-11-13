@@ -1,0 +1,49 @@
+# Terraform files
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform.lock.hcl
+terraform.rc
+.terraformrc
+
+# Kubernetes
+kubeconfig*
+*.kubeconfig
+
+# Node.js (for the sample app)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Environment files
+.env
+.env.*
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Azure CLI files
+.azure/
+
+# Logs
+*.log
+logs/
+
+# Docker
+.dockerignore
+
+# Sensitive files
+secrets/
+*.pem
+*.key
