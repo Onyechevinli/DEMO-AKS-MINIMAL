@@ -59,12 +59,12 @@ resource "azurerm_kubernetes_cluster" "main" {
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
   dns_prefix          = "${var.aks_cluster_name}-dns"
-  kubernetes_version  = var.kubernetes_version
+  
 
   default_node_pool {
     name       = "default"
     node_count = var.node_count
-    vm_size    = var.node_vm_size
+    vm_size    = "Standard_D2s_v3"
 
     upgrade_settings {
       max_surge = "10%"
@@ -107,7 +107,7 @@ resource "azuread_service_principal" "github_actions" {
 # Create password for the service principal
 resource "azuread_service_principal_password" "github_actions" {
   service_principal_id = azuread_service_principal.github_actions.object_id
-  end_date            = "2024-12-31T23:59:59Z"
+  end_date            = "2025-12-31T23:59:59Z"
 }
 
 # Assign Contributor role to the service principal for the resource group

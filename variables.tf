@@ -32,7 +32,7 @@ variable "aks_cluster_name" {
 variable "kubernetes_version" {
   description = "Kubernetes version for AKS cluster"
   type        = string
-  default     = "1.27"
+  default     = "1.33.4"
 }
 
 variable "node_count" {
@@ -49,14 +49,14 @@ variable "node_count" {
 variable "node_vm_size" {
   description = "VM size for the AKS nodes"
   type        = string
-  default     = "Standard_DS2_v2"
+  default     = "Standard_D2s_v3"
 }
 
 # ACR Configuration
 variable "acr_name" {
   description = "Name of the Azure Container Registry (will have random suffix)"
   type        = string
-  default     = "acrwebapp"
+  default     = "acrdemoapp"
 
   validation {
     condition     = can(regex("^[a-zA-Z0-9]*$", var.acr_name))

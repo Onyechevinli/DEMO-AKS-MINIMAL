@@ -67,12 +67,12 @@ output "github_actions_client_secret" {
 
 output "github_actions_tenant_id" {
   description = "Tenant ID for GitHub Actions service principal"
-  value       = azurerm_client_config.current.tenant_id
+  value       = data.azurerm_client_config.current.tenant_id
 }
 
 output "github_actions_subscription_id" {
   description = "Subscription ID for GitHub Actions service principal"
-  value       = azurerm_client_config.current.subscription_id
+  value       = data.azurerm_client_config.current.subscription_id
 }
 
 # Data source for current client configuration

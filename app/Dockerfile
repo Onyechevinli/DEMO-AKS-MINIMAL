@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
+# Install the dependencies, and generate the package-lock.json file automatically.
+RUN npm install
+
 # Install production dependencies only
 RUN npm ci --only=production && npm cache clean --force
 
