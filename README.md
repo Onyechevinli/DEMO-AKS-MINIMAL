@@ -154,6 +154,46 @@ kubectl get ingress webapp-demo-ingress -n webapp-demo
 
 # Or use port forwarding for immediate access
 kubectl port-forward svc/webapp-demo-service 8080:80 -n webapp-demo
+
+# if you can not access via ingress, you need to use:
+
+
+A LoadBalancer service
+
+Right now, you have no way to access the app externally.
+
+✅ Option 1 — Convert your Service to LoadBalancer (fastest way)
+
+Create/update your service YAML to:
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-demo-service
+  namespace: webapp-demo
+spec:
+  type: LoadBalancer            # ← CHANGE THIS From ClusterIP to LoadBalancer
+  selector:
+    app: webapp-demo
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+
+
+Save  and push the changes to github to trigger the pipeline, or apply it directly:
+kubectl apply -f k8s/deployment.yaml
+
+Then wait for few minutes to get the external IP, after that run:
+kubectl get svc -n webapp-demo
+
+
+You should eventually get:
+
+EXTERNAL-IP: 20.55.x.x
+Then access your app at: http://<EXTERNAL-IP>
+
+
 ```
 
 ## 🛠️ Configuration
